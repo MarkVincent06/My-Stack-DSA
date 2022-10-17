@@ -28,11 +28,29 @@ bool areCurlyBraceBalanced(string exp) {
 }
 
 int main() {
+    int noOfExpressions;
 	string expression;
-	cout<<"Enter an expression:  "; // input expression from STDIN/Console
-	cin>>expression;
-	if(areCurlyBraceBalanced(expression))
-		cout<<"Balanced\n";
-	else
-		cout<<"Not Balanced\n";
+
+    cout << "Input number of expressions: ";
+    cin >> noOfExpressions;
+
+    int results[noOfExpressions]; // This array will store ones and zeroes to correctly display balanced or not balanced of curly braces.
+    cout << endl;
+
+    for(int i=0; i<noOfExpressions; i++) {
+        cout << "Enter expression " << (i+1) << ": ";
+        cin >> expression;
+	    areCurlyBraceBalanced(expression) ? results[i] = 1 : results[i] = 0;
+    }
+
+    cout << "\nOutput: " << endl;
+
+    for(int i=0; i<noOfExpressions; i++) {
+        if(results[i]) {
+            cout << "Expression " << (i+1) << " is... BALANCED!" << endl;
+        } else {
+            cout << "Expression " << (i+1) << " is... NOT BALANCED!" << endl;    
+        }
+    }
+
 }
